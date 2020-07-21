@@ -40,6 +40,7 @@ public class PersonService {
         existingPerson.setNome(person.getNome());
         existingPerson.setCognome(person.getCognome());
         existingPerson.setNumero(person.getNumero());
+        existingPerson.setEmail(person.getEmail());
         return userRepository.save(existingPerson);
     }
 }

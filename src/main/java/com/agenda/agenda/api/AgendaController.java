@@ -40,16 +40,19 @@ public class AgendaController {
         return personService.getAllPeople(keyword);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/{id}")
     public Person findPersonById(@PathVariable UUID id) {
         return personService.getPersonById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/update")
     public Person updatePerson(@RequestBody Person person) {
         return personService.updatePerson(person);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/delete/{id}")
     public String deletePerson(@PathVariable UUID id) {
         return personService.deletePerson(id);
