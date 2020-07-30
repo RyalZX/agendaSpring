@@ -20,13 +20,16 @@ public class Person {
     private String numero;
     @Column(name = "email")
     private String email;
+    @Column(name="id_account")
+    private Integer id_account;
 
-    public Person(UUID id, String nome, String cognome, String numero, String email) {
+    public Person(UUID id, String nome, String cognome, String numero, String email, Integer id_account) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
         this.numero = numero;
         this.email = email;
+        this.id_account = id_account;
     }
 
     public Person() {
@@ -35,6 +38,7 @@ public class Person {
         this.cognome = null;
         this.numero = null;
         this.email = null;
+        this.id_account = null;
     }
 
     public UUID getId() {
@@ -75,5 +79,13 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getId_account() {
+        return id_account;
+    }
+
+    public void setId_account(Integer id_account) {
+        this.id_account = id_account;
     }
 }

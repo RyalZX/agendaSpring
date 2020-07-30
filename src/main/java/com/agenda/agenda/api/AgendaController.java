@@ -36,7 +36,6 @@ public class AgendaController {
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/all")
     public List<Person> findAllProducts(@Param("keyword") String keyword) {
-        //keyword = "gianluca";
         return personService.getAllPeople(keyword);
     }
 
