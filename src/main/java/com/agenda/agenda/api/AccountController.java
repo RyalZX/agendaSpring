@@ -18,22 +18,22 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping("/add")
+    @PostMapping("/")
     public Account addAccount(@RequestBody Account account) {
         return accountService.saveAccount(account);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/")
     public Account updateAccount(@RequestBody Account account) {
         return accountService.updateAccount(account);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public String deletePerson(@PathVariable Integer id) {
         return accountService.deleteAccount(id);
     }
 
-    @GetMapping("/findaccount")
+    @GetMapping("/")
     public Account findAccount(@Param("nickname") String nickname, @Param("password") String password) {
         return accountService.getAccount(nickname, password);
     }

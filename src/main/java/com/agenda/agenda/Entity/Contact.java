@@ -5,7 +5,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "agenda")
-public class Person {
+public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +23,7 @@ public class Person {
     @Column(name="id_account")
     private Integer id_account;
 
-    public Person(UUID id, String nome, String cognome, String numero, String email, Integer id_account) {
+    public Contact(UUID id, String nome, String cognome, String numero, String email, Integer id_account) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
@@ -32,7 +32,7 @@ public class Person {
         this.id_account = id_account;
     }
 
-    public Person() {
+    public Contact() {
         this.id = null;
         this.nome = null;
         this.cognome = null;
