@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/account")
 @RestController
@@ -29,13 +32,18 @@ public class AccountController {
     }
 
     @DeleteMapping("/{id}")
-    public String deletePerson(@PathVariable Integer id) {
+    public String deletePerson(@PathVariable String id) {
         return accountService.deleteAccount(id);
     }
 
     @GetMapping("/")
     public Account findAccount(@Param("nickname") String nickname, @Param("password") String password) {
         return accountService.getAccount(nickname, password);
+    }
+
+    @GetMapping("/all")
+    public List<Account> getAll() {
+        return accountService.getAll();
     }
 
 }

@@ -1,36 +1,30 @@
 package com.agenda.agenda.Entity;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "account")
+
+@Document(collection = "account")
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id_account")
-    private Integer id;
-
-    @Column(name="nickname")
+    private String id;
     private String nickname;
-
-    @Column(name="password")
     private String password;
 
-    public Account(Integer id, String nickname, String password) {
+    public Account(String id, String nickname, String password) {
         this.id = id;
         this.nickname = nickname;
         this.password = password;
     }
 
-    public Account() {
-    }
+    public Account() { }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

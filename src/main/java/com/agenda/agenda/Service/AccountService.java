@@ -5,6 +5,8 @@ import com.agenda.agenda.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AccountService {
 
@@ -15,13 +17,13 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public String deleteAccount(Integer id) {
+    public String deleteAccount(String id) {
         accountRepository.deleteById(id);
         return "account eliminato";
     }
 
     public Account updateAccount(Account account) {
-        Account existingAccount = accountRepository.findById(account.getId())
+        Account existingAccount = accountRepository.findById(String.valueOf(account.getId()))
                 .orElse(null);
         existingAccount.setNickname(account.getNickname());
         existingAccount.setPassword(account.getPassword());
@@ -29,7 +31,11 @@ public class AccountService {
     }
 
     public Account getAccount(String nickname, String password) {
-        return accountRepository.findByCredentials(nickname, password);
+        return accountRepository.findByNicknameAndPassword(nickname, password);
+    }
+
+    public List<Account> getAll() {
+        return accountRepository.findAll();
     }
 
 }
