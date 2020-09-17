@@ -18,9 +18,9 @@ public class ContactService {
     }
 
     public List<Contact> getAllPeople(String idAccount, String keyword) {
-        /*if (keyword != null) {
+        if (keyword != null) {
             return contactRepository.findByIdAccountAndKeyword(idAccount ,keyword);
-        } */
+        }
         return contactRepository.findByIdAccount(idAccount);
     }
 
