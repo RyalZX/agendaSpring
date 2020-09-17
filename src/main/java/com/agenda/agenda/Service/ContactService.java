@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class ContactService {
@@ -18,14 +17,14 @@ public class ContactService {
         return contactRepository.save(contact);
     }
 
-    public List<Contact> getAllPeople(Integer id_account, String keyword) {
-        if (keyword != null) {
-            return contactRepository.findByKeyword(id_account ,keyword);
-        }
-        return contactRepository.findPeople(id_account);
+    public List<Contact> getAllPeople(String idAccount, String keyword) {
+        /*if (keyword != null) {
+            return contactRepository.findByIdAccountAndKeyword(idAccount ,keyword);
+        } */
+        return contactRepository.findByIdAccount(idAccount);
     }
 
-    public String deletePerson(UUID id) {
+    public String deletePerson(String id) {
         contactRepository.deleteById(id);
         return "persona eliminata";
     }

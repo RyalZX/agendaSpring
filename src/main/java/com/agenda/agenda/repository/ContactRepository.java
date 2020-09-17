@@ -1,21 +1,25 @@
 package com.agenda.agenda.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.agenda.agenda.Entity.Contact;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
-import java.util.UUID;
 
 
-@Repository("agenda")
-public interface ContactRepository extends JpaRepository<Contact, UUID>, JpaSpecificationExecutor<Contact> {
+public interface ContactRepository extends MongoRepository<Contact, String> {
 
-    @Query(value = "SELECT c FROM Contact c WHERE c.id_account = ?1 AND (c.nome LIKE %?2% OR c.cognome LIKE %?2% OR c.numero LIKE %?2% OR c.email LIKE %?2%)")
+    /*@Query(value = "SELECT c FROM Contact c WHERE c.id_account = ?1 AND (c.nome LIKE %?2% OR c.cognome LIKE %?2% OR c.numero LIKE %?2% OR c.email LIKE %?2%)")
     List<Contact> findByKeyword(Integer id_account, String keyword);
 
     @Query(value = "SELECT c FROM Contact c WHERE c.id_account = ?1")
-    List<Contact> findPeople(Integer id_account);
+    List<Contact> findPeople(Integer id_account); */
+
+    /*@Query(" { 'id_account': ?0, and or or or } ")
+    List<Contact> findByIdAccountAndKeyword(String idAccount, String keyword); */
+
+    @Query(" { 'idAccount': ?0 } ")
+    List<Contact> findByIdAccount(String idAccount);
+
+
 }

@@ -1,51 +1,36 @@
 package com.agenda.agenda.Entity;
 
-import javax.persistence.*;
-import java.util.UUID;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
 
-@Entity
-@Table(name = "agenda")
+@Document(collection = "contact")
 public class Contact {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    @org.hibernate.annotations.Type(type="uuid-char")
-    private UUID id;
-    @Column(name="nome")
+    private String id;
     private String nome;
-    @Column(name="cognome")
     private String cognome;
-    @Column(name="numero")
     private String numero;
-    @Column(name = "email")
     private String email;
-    @Column(name="id_account")
-    private Integer id_account;
+    private String idAccount;
 
-    public Contact(UUID id, String nome, String cognome, String numero, String email, Integer id_account) {
+    public Contact(String id, String nome, String cognome, String numero, String email, String idAccount) {
         this.id = id;
         this.nome = nome;
         this.cognome = cognome;
         this.numero = numero;
         this.email = email;
-        this.id_account = id_account;
+        this.idAccount = idAccount;
     }
 
     public Contact() {
-        this.id = null;
-        this.nome = null;
-        this.cognome = null;
-        this.numero = null;
-        this.email = null;
-        this.id_account = null;
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -81,11 +66,11 @@ public class Contact {
         this.email = email;
     }
 
-    public Integer getId_account() {
-        return id_account;
+    public String getIdAccount() {
+        return idAccount;
     }
 
-    public void setId_account(Integer id_account) {
-        this.id_account = id_account;
+    public void setIdAccount(String idAccount) {
+        this.idAccount = idAccount;
     }
 }

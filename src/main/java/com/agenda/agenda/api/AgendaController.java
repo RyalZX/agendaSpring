@@ -2,21 +2,16 @@ package com.agenda.agenda.api;
 
 import com.agenda.agenda.Entity.Contact;
 import com.agenda.agenda.Service.ContactService;
-import com.agenda.agenda.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/contacts")
 @RestController
 public class AgendaController {
-
-    @Autowired
-    private ContactRepository userRepository;
 
     @Autowired
     private ContactService contactService;
@@ -29,9 +24,9 @@ public class AgendaController {
     }
 
     //GET
-    @GetMapping("/{id_account}")
-    public List<Contact> findAllPeople(@PathVariable("id_account") Integer id_account, @Param("keyword") String keyword) {
-        return contactService.getAllPeople(id_account, keyword);
+    @GetMapping("/{idAccount}")
+    public List<Contact> findAllPeople(@PathVariable("idAccount") String idAccount, @Param("keyword") String keyword) {
+        return contactService.getAllPeople(idAccount, keyword);
     }
 
     //UPDATE
@@ -42,7 +37,7 @@ public class AgendaController {
 
     //DELETE
     @DeleteMapping("/{id}")
-    public String deletePerson(@PathVariable UUID id) {
+    public String deletePerson(@PathVariable String id) {
         return contactService.deletePerson(id);
     }
 
