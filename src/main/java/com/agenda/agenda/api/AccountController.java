@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin(origins = "agendaspring.herokuapp.com")
+@CrossOrigin(origins = "*")
 @RequestMapping("/account")
 @RestController
 public class AccountController {
