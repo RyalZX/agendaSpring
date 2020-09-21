@@ -14,7 +14,13 @@ public class AccountService {
     private AccountRepository accountRepository;
 
     public Account saveAccount(Account account) {
+        Account existingAccount = accountRepository.findById(String.valueOf(account.getId()))
+                .orElse(null);
+        if (existingAccount != null) {
+            System.out.println("errore, account già esistente");
+        }
         return accountRepository.save(account);
+
     }
 
     public String deleteAccount(String id) {
