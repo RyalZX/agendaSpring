@@ -5,6 +5,7 @@ import com.agenda.agenda.Service.AccountService;
 import com.agenda.agenda.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,6 +40,11 @@ public class AccountController {
     @GetMapping("/")
     public Account findAccount(@Param("nickname") String nickname, @Param("password") String password) {
         return accountService.getAccount(nickname, password);
+    }
+
+    @GetMapping("/{nickname}")
+    public String findAccountByNick(@PathVariable String nickname) {
+        return accountService.getAccountByNick(nickname);
     }
 
 }

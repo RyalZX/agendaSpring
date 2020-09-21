@@ -8,4 +8,6 @@ public interface AccountRepository extends MongoRepository<Account, String> {
 
     Account findByNicknameAndPassword(String nickname, String password);
 
+    Account findByNickname(String nickname);
+
 }
