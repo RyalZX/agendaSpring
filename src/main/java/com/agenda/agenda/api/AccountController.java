@@ -41,9 +41,4 @@ public class AccountController {
         return accountService.getAccount(nickname, password);
     }
 
-    @GetMapping("/all")
-    public List<Account> getAll() {
-        return accountService.getAll();
-    }
-
 }
