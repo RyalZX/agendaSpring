@@ -51,7 +51,7 @@ public class SendgridController {
         String subject = "Recupera il tuo account su agendalauro";
         Email to = new Email(email);
         Account account = accountRepository.findByEmail(email);
-        Content content = new Content("text/html", "<h1> Clicca <a href='https://agendalauro.herokuapp.com/updateaccount?id=" + account.getId() + "'>qui</a> per ripristinare la tua password " + account.getNickname() +  "</h1>");
+        Content content = new Content("text/html", "<h1> Clicca <a href='https://agendalauro.netlify.app/#/updateaccount?id=" + account.getId() + "'>qui</a> per ripristinare la tua password " + account.getNickname() +  "</h1>");
         Mail mail = new Mail(from, subject, to, content);
 
         SendGrid sg = new SendGrid("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");

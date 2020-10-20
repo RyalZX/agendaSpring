@@ -53,7 +53,7 @@ public class AccountController {
 
     @GetMapping("/active/{id}")
     public Account active(@PathVariable("id") String id, HttpServletResponse httpServletResponse) {
-        httpServletResponse.setHeader("Location", "https://agendalauro.herokuapp.com/active");
+        httpServletResponse.setHeader("Location", "https://agendalauro.netlify.app/#/active");
         httpServletResponse.setStatus(302);
         return accountService.activeAccount(id);
     }
